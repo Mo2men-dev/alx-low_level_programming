@@ -10,23 +10,23 @@ void times_table(void)
 
 	for (i = 0; i <= 9; i++)
 	{
-		putchar('0');
+		_putchar('0');
 		for (j = 1; j <= 9; j++)
 		{
-			putchar(',');
-			putchar(' ');
+			_putchar(',');
+			_putchar(' ');
 			result = i * j;
 			if (result <= 9)
 			{
-				putchar(' ');
-				putchar(result + 48);
+				_putchar(' ');
+				_putchar(result + 48);
 			}
 			else
 			{
-				putchar((result / 10) + 48);
-				putchar((result % 10) + 48);
+				_putchar((result / 10) + 48);
+				_putchar((result % 10) + 48);
 			}
 		}
-		putchar('\n');
+		_putchar('\n');
 	}
 }
