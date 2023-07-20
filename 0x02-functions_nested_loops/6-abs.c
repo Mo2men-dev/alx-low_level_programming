@@ -12,7 +12,7 @@ int _abs(int n)
 	}
 	if (n < 0)
 	{
-		return (-num);
+		return (-n);
 	}
 	_putchar(48);
 	return (0);
