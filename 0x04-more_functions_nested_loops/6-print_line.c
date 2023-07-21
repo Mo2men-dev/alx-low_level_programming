@@ -10,11 +10,6 @@ void print_line(int n)
 {
 	int i = 0;
 
-	if (n <= 0)
-	{
-		_putchar(10);
-	}
-
 	while (i < n)
 	{
 		_putchar(95);
