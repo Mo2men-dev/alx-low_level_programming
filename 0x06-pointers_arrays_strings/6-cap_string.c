@@ -8,24 +8,31 @@
 
 char *cap_string(char *s)
 {
-	int i = 0;
-	int j = 0;
+	int index = 0;
 
-	char symbols[13] = {' ', '\t', '\n', ',', ';', '.', '!'
-, '?', '\"', '(', ')', '{', '}'};
-
-	while (s[i] != '\0')
+	while (s[index])
 	{
-		j = 0;
-		while (j < 13)
-		{
-			if (s[i] == symbols[j] && (s[i + 1] >= 'a' && s[i + 1] <= 'z'))
-			{
-				s[i + 1] = s[i + 1] - 32;
-			}
-			j++;
-		}
-		i++;
+		while (!(s[index] >= 'a' && s[index] <= 'z'))
+			index++;
+
+		if (s[index - 1] == ' ' ||
+		    s[index - 1] == '\t' ||
+		    s[index - 1] == '\n' ||
+		    s[index - 1] == ',' ||
+		    s[index - 1] == ';' ||
+		    s[index - 1] == '.' ||
+		    s[index - 1] == '!' ||
+		    s[index - 1] == '?' ||
+		    s[index - 1] == '"' ||
+		    s[index - 1] == '(' ||
+		    s[index - 1] == ')' ||
+		    s[index - 1] == '{' ||
+		    s[index - 1] == '}' ||
+		    index == 0)
+			s[index] -= 32;
+
+		index++;
 	}
+
 	return (s);
 }
