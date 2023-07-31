@@ -20,5 +20,8 @@ char *_strchr(char *s, char c)
 		}
 		i++;
 	}
+
+	if (*s == c)
+		return (s);
 	return (0);
 }
