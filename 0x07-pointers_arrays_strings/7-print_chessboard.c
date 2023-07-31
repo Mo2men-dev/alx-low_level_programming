@@ -26,10 +26,10 @@ void print_chessboard(char (*a)[8])
 			}
 			else
 			{
-				putchar(a[i][j]);
+				_putchar(a[i][j]);
 			}
 		}
-		putchar(10);
+		_putchar(10);
 	}
 }
 
