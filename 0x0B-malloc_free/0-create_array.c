@@ -12,21 +12,19 @@
  */
 char *create_array(unsigned int size, char c)
 {
-	char nl = '\0';
-	char *ptr = &nl;
 	char *s;
 	unsigned int i;
 
 	if (size == 0)
 	{
-		return (ptr);
+		return (NULL);
 	}
 
 	s = malloc(size * sizeof(c));
 
 	if (s == NULL)
 	{
-		return (ptr);
+		return (NULL);
 	}
 
 	i = 0;
