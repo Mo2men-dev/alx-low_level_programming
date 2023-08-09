@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include "main.h"
 
+#include <stdlib.h>
+
 /**
  * get_str_len - Calculates the length of a string.
  * @str: The input string.
@@ -29,47 +31,30 @@ int get_str_len(char *str)
  */
 char *str_concat(char *s1, char *s2)
 {
+	int s1_len = 0;
+	int s2_len = 0;
+	int i = 0, j = 0;
 	char *concat_str;
-	int s1_len;
-	int s2_len;
-	int i;
-	int j;
 
 	if (s1 == NULL && s2 == NULL)
-	{
 		return (NULL);
-	}
 
-	s1_len = (s1 == NULL) ? 0 : get_str_len(s1);
-	s2_len = (s2 == NULL) ? 0 : get_str_len(s2);
+	if (s1 != NULL)
+		s1_len = get_str_len(s1);
+
+	if (s2 != NULL)
+		s2_len = get_str_len(s2);
 
 	concat_str = malloc((s1_len + s2_len + 1) * sizeof(char));
 
 	if (concat_str == NULL)
-	{
 		return (NULL);
-	}
 
-	i = 0;
-	if (s1 != NULL)
-	{
-		while (i < s1_len)
-		{
-			concat_str[i] = s1[i];
-			i++;
-		}
-	}
+	while (i < s1_len)
+		concat_str[i++] = s1[i];
 
-	if (s2 != NULL)
-	{
-		j = 0;
-		while (i < s1_len + s2_len)
-		{
-			concat_str[i] = s2[j];
-			i++;
-			j++;
-		}
-	}
+	while (i < s1_len + s2_len)
+		concat_str[i++] = s2[j++];
 
 	concat_str[i] = '\0';
 
