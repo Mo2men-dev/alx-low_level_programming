@@ -37,18 +37,15 @@ char *argstostr(int ac, char **av)
 	while (i < ac)
 	{
 		j = 0;
-		if (av[i][0] == ' ')
-		{
-			s[k] = '\n', k++, i++;
-		}
+
 		while (av[i][j])
 		{
 			s[k] = av[i][j], j++, k++;
 		}
-		i++;
+		s[k] = '\n', k++, i++;
 	}
 
-	s[k] = '\n', s[k + 1] = '\0';
+	s[k] = '\0';
 	return (s);
 }
 
