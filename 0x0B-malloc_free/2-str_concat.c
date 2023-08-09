@@ -1,8 +1,6 @@
 #include <stdlib.h>
 #include "main.h"
 
-#include <stdlib.h>
-
 /**
  * get_str_len - Calculates the length of a string.
  * @str: The input string.
@@ -31,9 +29,7 @@ int get_str_len(char *str)
  */
 char *str_concat(char *s1, char *s2)
 {
-	int s1_len = 0;
-	int s2_len = 0;
-	int i = 0, j = 0;
+	int s1_len = 0, s2_len = 0, i = 0, j = 0, k = 0;
 	char *concat_str;
 
 	if (s1 == NULL && s2 == NULL)
@@ -51,12 +47,13 @@ char *str_concat(char *s1, char *s2)
 		return (NULL);
 
 	while (i < s1_len)
-		concat_str[i++] = s1[i];
+		concat_str[k++] = s1[i++];
 
-	while (i < s1_len + s2_len)
-		concat_str[i++] = s2[j++];
+	while (j < s2_len)
+		concat_str[k++] = s2[j++];
 
-	concat_str[i] = '\0';
+	concat_str[k] = '\0';
 
 	return (concat_str);
 }
+
