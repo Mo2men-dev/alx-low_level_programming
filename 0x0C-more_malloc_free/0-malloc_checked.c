@@ -11,12 +11,12 @@
 void *malloc_checked(unsigned int b)
 {
 	void *ptr;
-	
+
 	ptr = malloc(b);
-	
+
 	if (ptr == NULL)
 	{
-		exit(98); // Terminate the process with status value 98
+		exit(98);
 	}
 
 	return (ptr);
