@@ -35,8 +35,9 @@ bool isInteger(const char *str)
 int main(int argc, char *argv[])
 {
 	int sum = 0;
+	int i = 1;
 
-	for (int i = 1; i < argc; i++)
+	while (i < argc)
 	{
 		if (!isInteger(argv[i]))
 		{
@@ -44,6 +45,7 @@ int main(int argc, char *argv[])
 			return (1);
 		}
 		sum += atoi(argv[i]);
+		i++;
 	}
 
 	printf("%d\n", sum);
