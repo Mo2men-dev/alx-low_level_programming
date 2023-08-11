@@ -6,46 +6,38 @@
  * @ptr: Pointer to the memory block to reallocate.
  * @old_size: Size of the currently allocated memory block.
  * @new_size: New size for the reallocated memory block.
- *
  * Return: Pointer to the reallocated memory block, or NULL on failure.
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	void *new_ptr;
+	char *ptr1;
 	char *old_ptr;
-	char *new_ptr_char;
-	unsigned int min_size;
+	unsigned int i;
 
-	if (new_size == 0)
+	if (new_size == old_size)
+		return (ptr);
+	if (new_size == 0 && ptr)
 	{
 		free(ptr);
 		return (NULL);
 	}
-
-	if (ptr == NULL)
+	if (!ptr)
 		return (malloc(new_size));
-
-	if (new_size == old_size)
-		return (ptr);
-
-	new_ptr = malloc(new_size);
-	if (new_ptr == NULL)
+	ptr1 = malloc(new_size);
+	if (!ptr1)
 		return (NULL);
-
 	old_ptr = ptr;
-	new_ptr_char = new_ptr;
-	min_size = (old_size < new_size) ? old_size : new_size;
-
-	while (min_size > 0)
+	if (new_size < old_size)
 	{
-		*new_ptr_char = *old_ptr;
-		new_ptr_char++;
-		old_ptr++;
-		min_size--;
+		for (i = 0; i < new_size; i++)
+			ptr1[i] = old_ptr[i];
 	}
-
+	if (new_size > old_size)
+	{
+		for (i = 0; i < old_size; i++)
+			ptr1[i] = old_ptr[i];
+	}
 	free(ptr);
-
-	return (new_ptr);
+	return (ptr1);
 }
 
