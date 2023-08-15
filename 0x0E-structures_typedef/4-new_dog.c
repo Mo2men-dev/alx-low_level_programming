@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int _strlen(char *str);
-char *_strdup(char *dest, char *src);
+char *_strcopy(char *dest, char *src);
 dog_t *new_dog(char *name, float age, char *owner);
 
 /**
@@ -22,14 +22,14 @@ int _strlen(char *str)
 }
 
 /**
- * _strdup - Copies a string pointed to by src, including the
+ * _strcopy - Copies a string pointed to by src, including the
  *            terminating null byte, to a buffer pointed to by dest.
  * @dest: The buffer storing the string copy.
  * @src: The source string.
  *
  * Return: The pointer to dest.
  */
-char *_strdup(char *dest, char *src)
+char *_strcopy(char *dest, char *src)
 {
 	int index = 0;
 
@@ -51,33 +51,33 @@ char *_strdup(char *dest, char *src)
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *pupp;
+	dog_t *doggo;
 
 	if (name == NULL || age < 0 || owner == NULL)
 		return (NULL);
 
-	pupp = malloc(sizeof(dog_t));
-	if (pupp == NULL)
+	doggo = malloc(sizeof(dog_t));
+	if (doggo == NULL)
 		return (NULL);
 
-	pupp->name = malloc(sizeof(char) * (_strlen(name) + 1));
-	if (pupp->name == NULL)
+	doggo->name = malloc(sizeof(char) * (_strlen(name) + 1));
+	if (doggo->name == NULL)
 	{
-		free(pupp);
+		free(doggo);
 		return (NULL);
 	}
 
-	pupp->owner = malloc(sizeof(char) * (_strlen(owner) + 1));
-	if (pupp->owner == NULL)
+	doggo->owner = malloc(sizeof(char) * (_strlen(owner) + 1));
+	if (doggo->owner == NULL)
 	{
-		free(pupp->name);
-		free(pupp);
+		free(doggo->name);
+		free(doggo);
 		return (NULL);
 	}
 
-	pupp->name = _strcopy(pupp->name, name);
-	pupp->age = age;
-	pupp->owner = _strcopy(pupp->owner, owner);
+	doggo->name = _strcopy(doggo->name, name);
+	doggo->age = age;
+	doggo->owner = _strcopy(doggo->owner, owner);
 
-	return (pupp);
+	return (doggo);
 }
