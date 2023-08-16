@@ -2,7 +2,7 @@
 /**
  * print_name - Calls a function to print a name.
  * @name: The name to be printed.
- * @f: A pointer to a function that takes a char pointer argument and returns void.
+ * @f: pointer to a function that takes char pointer argument and returns void.
  *
  * This function takes a name and a function pointer as arguments.
  * It then calls the provided function, passing the name as an argument to it.
