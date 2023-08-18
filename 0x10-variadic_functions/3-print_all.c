@@ -1,54 +1,50 @@
 #include "variadic_functions.h"
-#include <stdarg.h>
 #include <stdio.h>
-
+#include <stdarg.h>
 /**
  * print_all - Print a variable number of values based on the format.
- * @format: The format string specifying the types of values to print.
- * @...: Variable number of arguments based on the format.
+ * @format: List of argument types (c = char, i = int, f = float, s = char *)
  *
  * Return: void
  */
-void print_all(const char *const format, ...)
+void print_all(const char * const format, ...)
 {
-	int format_len = 0, itr = 0;
+	va_list valist;
+	int n = 0, i = 0;
 	char *sep = ", ";
-	char *curr_arg;
-	va_list ap;
+	char *str;
 
-	va_start(ap, format);
-	while (format[format_len] != '\0')
-	{
-		format_len++;
-	}
+	va_start(valist, format);
 
-	while (format[itr] != '\0')
+	while (format && format[i])
+		i++;
+
+	while (format && format[n])
 	{
-		if (itr == (format_len - 1))
+		if (n  == (i - 1))
 		{
 			sep = "";
 		}
-		switch (format[itr])
+		switch (format[n])
 		{
 		case 'c':
-			printf("%c%s", va_arg(ap, int), sep);
+			printf("%c%s", va_arg(valist, int), sep);
 			break;
 		case 'i':
-			printf("%i%s", va_arg(ap, int), sep);
+			printf("%d%s", va_arg(valist, int), sep);
 			break;
 		case 'f':
-			printf("%f%s", va_arg(ap, double), sep);
+			printf("%f%s", va_arg(valist, double), sep);
 			break;
 		case 's':
-			curr_arg = va_arg(ap, char *);
-			if (curr_arg == NULL)
-				curr_arg = "(nil)";
-			printf("%s%s", curr_arg, sep);
+			str = va_arg(valist, char *);
+			if (str == NULL)
+				str = "(nil)";
+			printf("%s%s", str, sep);
 			break;
 		}
-		itr++;
+		n++;
 	}
-
 	printf("\n");
-	va_end(ap);
+	va_end(valist);
 }
