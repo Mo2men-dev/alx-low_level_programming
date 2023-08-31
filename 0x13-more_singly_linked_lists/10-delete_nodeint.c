@@ -1,6 +1,4 @@
-#include <stddef.h>
-#include <stdlib.h>
-#include "your_header_file_here.h"
+#include "lists.h"
 
 /**
  * delete_nodeint_at_index - Deletes a node at index in a linked list.

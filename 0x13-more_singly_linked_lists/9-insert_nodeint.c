@@ -1,6 +1,4 @@
-#include <stddef.h>
-#include <stdlib.h>
-#include "your_header_file_here.h"
+#include "lists.h"
 
 /**
  * insert_nodeint_at_index - Insert a new node with a given value at idx.
