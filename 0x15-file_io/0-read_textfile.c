@@ -10,30 +10,27 @@
  *	0 on failure, including NULL filename, inability to open the file,
  *	read error, or write error.
  */
-ssize_t read_textfile(const char *filename, size_t letters) {
+ssize_t read_textfile(const char *filename, size_t letters)
+{
 	char *buff = (char *)malloc(letters);
 	ssize_t bytes_read;
 	int fd;
 	ssize_t printed;
 
-	if (filename == NULL) {
+	if (filename == NULL)
 		return (0);
-	}
 
 	fd = open(filename, O_RDWR);
-	if (fd == -1) {
+	if (fd == -1)
 		return (0);
-	}
 
 	bytes_read = read(fd, buff, letters);
-	if (bytes_read == -1) {
+	if (bytes_read == -1)
 		return (0);
-	}
 
 	printed = write(STDOUT_FILENO, buff, bytes_read);
-	if (printed == -1) {
+	if (printed == -1)
 		return (0);
-	}
 
 	close(fd);
 
